@@ -1,0 +1,923 @@
+{
+ "title": "Atlas des logiciels de montage",
+ "lang": "fr",
+ "description": "140 logiciels de montage comparés sur une grille commune, avec licences, formats, agents et retours de monteurs.",
+ "dataDatePath": "date",
+ "staleAfterDays": 14,
+ "staleNote": "Ces outils changent vite : vérifier avant de décider.",
+ "defaultCollection": "fiches",
+ "dicts": {
+  "famille": {
+   "pro": "Professionnel",
+   "grand-public": "Grand public",
+   "open-source": "Open source",
+   "web": "Web",
+   "ai-first": "IA d'abord"
+  }
+ },
+ "tones": {},
+ "fieldLabels": {},
+ "about": [
+  {
+   "h": "Comment lire la grille",
+   "p": [
+    "Grille éditoriale, pas une mesure, datée du 7 novembre 2026. Elle dit à quel point un outil est proche d'Apple et de Final Cut Pro, de 0 à 3, sur sept critères.",
+    "Une case vide en pointillé veut dire non évalué, jamais zéro. Le total ne compte que les critères notés. Il faut au moins 4 critères notés pour figurer au classement.",
+    "La fluidité ne se juge pas sur une image fixe : elle n'est notée nulle part. L'apprentissage n'est noté que sur 10 éditeurs ouverts dans le navigateur. Les autres notes viennent d'images fournies par les éditeurs, sans média manipulé. Les visuels marketing et les maquettes de page d'accueil ne sont pas notés.",
+    "Les notes prises dans un navigateur partagé sont signalées fiche par fiche et restent à revérifier. Leurs captures ne sont pas publiées.",
+    "Le classement mesure la proximité avec une interface, pas la qualité d'un logiciel. DaVinci Resolve y descend parce qu'il montre beaucoup à la fois, pas parce qu'il serait moins bon."
+   ]
+  },
+  {
+   "h": "Sources",
+   "p": [
+    "Chaque fiche liste ses sources et la date du dernier relevé. Ce qui n'a pas été lu s'écrit non vérifié.",
+    "Les retours de monteurs viennent de Reddit, depuis le 01/08/2025, sur une copie partielle : une moisson vide ne prouve pas l'absence de messages. Citations gardées en langue originale, moins de 25 mots. Les colonnes MCP disent ce qui est déclaré, rien n'a été exécuté. Une absence dans la recherche de code GitHub veut seulement dire que le mot n'est pas indexé."
+   ]
+  },
+  {
+   "h": "Icônes",
+   "p": [
+    "Foncée : oui. Grise : partiel. Très pâle : non. Pâle, avec non vérifié au survol : pas d'information sûre."
+   ]
+  },
+  {
+   "h": "Captures et marques",
+   "p": [
+    "Les captures viennent des pages des éditeurs et des dépôts publics, téléchargées le 7 novembre 2026. Chaque fiche donne l'adresse de sa capture. Retrait sur simple demande. Les marques et les logos appartiennent à leurs propriétaires."
+   ]
+  }
+ ],
+ "collections": [
+  {
+   "id": "fiches",
+   "label": "Fiches",
+   "noun": "logiciel",
+   "nounPlural": "logiciels",
+   "path": "fiches",
+   "idKey": "nom",
+   "title": [
+    "nom"
+   ],
+   "subtitle": [
+    {
+     "path": "famille",
+     "classes": [
+      {
+       "re": "^pro",
+       "label": "Professionnel"
+      },
+      {
+       "re": "^grand",
+       "label": "Grand public"
+      },
+      {
+       "re": "^open",
+       "label": "Open source"
+      },
+      {
+       "re": "^web",
+       "label": "Web"
+      },
+      {
+       "re": "^ai",
+       "label": "IA d'abord"
+      }
+     ]
+    },
+    {
+     "path": "licence",
+     "classes": [
+      {
+       "re": "^Propri",
+       "label": "Propriétaire"
+      },
+      {
+       "re": "^AGPL",
+       "label": "AGPL-3.0"
+      },
+      {
+       "re": "^GPL-3",
+       "label": "GPL-3.0"
+      },
+      {
+       "re": "^GPL-2",
+       "label": "GPL-2.0"
+      },
+      {
+       "re": "^MIT",
+       "label": "MIT"
+      },
+      {
+       "re": "^Apache",
+       "label": "Apache-2.0"
+      },
+      {
+       "re": "^AUCUNE",
+       "label": "Sans licence"
+      },
+      {
+       "re": "^GPL",
+       "label": "GPL"
+      }
+     ]
+    }
+   ],
+   "nameLabel": "Logiciel",
+   "thumb": "capture",
+   "urlPath": "url",
+   "tags": [
+    {
+     "path": "open_source",
+     "eq": true,
+     "label": "Open source",
+     "tone": "good"
+    },
+    {
+     "path": "open_source",
+     "eq": "partiel",
+     "label": "Open source en partie"
+    }
+   ],
+   "defaultSort": "nom",
+   "sort": [
+    {
+     "id": "magnetisme",
+     "label": "Magnétisme",
+     "path": "grille.magnetisme.note",
+     "dir": "desc"
+    },
+    {
+     "id": "contenu",
+     "label": "Contenu au premier plan",
+     "path": "grille.contenu_premier_plan.note",
+     "dir": "desc"
+    },
+    {
+     "id": "sobriete",
+     "label": "Sobriété visuelle",
+     "path": "grille.sobriete_visuelle.note",
+     "dir": "desc"
+    },
+    {
+     "id": "clavier",
+     "label": "Clavier d'abord",
+     "path": "grille.clavier_dabord.note",
+     "dir": "desc"
+    },
+    {
+     "id": "nom",
+     "label": "Nom",
+     "path": "nom",
+     "dir": "asc"
+    }
+   ],
+   "columns": [
+    {
+     "label": "Timeline",
+     "path": "timeline",
+     "w": "minmax(10rem,1.6fr)",
+     "pri": 2
+    },
+    {
+     "label": "Possède",
+     "fmt": "flags",
+     "w": "7rem",
+     "pri": 3,
+     "items": [
+      {
+       "path": "type_timeline",
+       "icon": "shape",
+       "label": "Timeline magnétique",
+       "classes": [
+        {
+         "re": "^Magn",
+         "state": "y"
+        },
+        {
+         "re": "^Hybride",
+         "state": "p"
+        },
+        {
+         "re": "^Non v",
+         "state": "u"
+        }
+       ],
+       "else": "n"
+      },
+      {
+       "path": "web_classe",
+       "icon": "eye",
+       "label": "Dans le navigateur",
+       "classes": [
+        {
+         "re": "^oui",
+         "state": "y"
+        },
+        {
+         "re": "^(cloud|partiel)",
+         "state": "p"
+        },
+        {
+         "re": "^non v",
+         "state": "u"
+        }
+       ],
+       "else": "n"
+      },
+      {
+       "path": "open_source",
+       "icon": "open",
+       "label": "Open source",
+       "eq": true
+      },
+      {
+       "path": "mcp_classe",
+       "icon": "plug",
+       "label": "MCP",
+       "classes": [
+        {
+         "re": "^oui",
+         "state": "y"
+        },
+        {
+         "re": "^tiers",
+         "state": "p"
+        },
+        {
+         "re": "^non v",
+         "state": "u"
+        }
+       ],
+       "else": "n"
+      }
+     ]
+    },
+    {
+     "label": "Grille",
+     "fmt": "heat",
+     "w": "9.25rem",
+     "items": [
+      "grille.sobriete_visuelle.note",
+      "grille.densite_sans_bruit.note",
+      "grille.clavier_dabord.note",
+      "grille.fluidite_animation.note",
+      "grille.contenu_premier_plan.note",
+      "grille.apprentissage_immediat.note",
+      "grille.magnetisme.note"
+     ],
+     "titles": [
+      "Sobriété visuelle",
+      "Densité sans bruit",
+      "Clavier d'abord",
+      "Fluidité et animation",
+      "Contenu au premier plan",
+      "Apprentissage immédiat",
+      "Magnétisme"
+     ]
+    }
+   ],
+   "facets": [
+    {
+     "id": "famille",
+     "label": "Famille",
+     "type": "enum",
+     "path": "famille",
+     "dict": "famille",
+     "icon": "shape"
+    },
+    {
+     "id": "tl",
+     "label": "Timeline",
+     "type": "enum",
+     "path": "type_timeline",
+     "icon": "shape",
+     "classes": [
+      {
+       "re": "^Magn",
+       "label": "Magnétique"
+      },
+      {
+       "re": "^Hybride",
+       "label": "Hybride"
+      },
+      {
+       "re": "^Pistes",
+       "label": "Pistes"
+      },
+      {
+       "re": "^Texte",
+       "label": "Texte"
+      },
+      {
+       "re": "^Autre",
+       "label": "Calques, code, nœuds"
+      },
+      {
+       "re": "^Sans",
+       "label": "Sans timeline propre"
+      },
+      {
+       "re": "^Non v",
+       "label": "Non vérifié"
+      }
+     ],
+     "labelOrder": [
+      "Magnétique",
+      "Hybride",
+      "Pistes",
+      "Texte",
+      "Calques, code, nœuds",
+      "Sans timeline propre",
+      "Non vérifié"
+     ]
+    },
+    {
+     "id": "web",
+     "label": "Navigateur",
+     "type": "enum",
+     "path": "web_classe",
+     "icon": "eye",
+     "classes": [
+      {
+       "re": "^oui",
+       "label": "Oui"
+      },
+      {
+       "re": "^cloud",
+       "label": "Cloud"
+      },
+      {
+       "re": "^partiel",
+       "label": "Partiel"
+      },
+      {
+       "re": "^non v",
+       "label": "Non vérifié"
+      },
+      {
+       "re": "^non",
+       "label": "Non"
+      }
+     ],
+     "labelOrder": [
+      "Oui",
+      "Cloud",
+      "Partiel",
+      "Non vérifié",
+      "Non"
+     ]
+    },
+    {
+     "id": "mcp",
+     "label": "MCP",
+     "type": "enum",
+     "path": "mcp_classe",
+     "icon": "plug",
+     "classes": [
+      {
+       "re": "^oui, natif",
+       "label": "Natif"
+      },
+      {
+       "re": "^oui",
+       "label": "Déclaré"
+      },
+      {
+       "re": "^tiers",
+       "label": "Tiers seulement"
+      },
+      {
+       "re": "^non v",
+       "label": "Non vérifié"
+      },
+      {
+       "re": "^non vu",
+       "label": "Non vu"
+      },
+      {
+       "re": "^non",
+       "label": "Non"
+      }
+     ],
+     "labelOrder": [
+      "Natif",
+      "Déclaré",
+      "Tiers seulement",
+      "Non vérifié",
+      "Non vu",
+      "Non"
+     ]
+    },
+    {
+     "id": "open",
+     "label": "Licence",
+     "type": "checks",
+     "icon": "licence",
+     "items": [
+      {
+       "id": "os",
+       "label": "Open source",
+       "path": "open_source",
+       "eq": true,
+       "icon": "open"
+      },
+      {
+       "id": "part",
+       "label": "Open source en partie",
+       "path": "open_source",
+       "eq": "partiel"
+      }
+     ]
+    }
+   ],
+   "sections": [
+    {
+     "title": "Grille, de 0 à 3",
+     "fields": [
+      {
+       "label": "Sobriété visuelle",
+       "path": "grille.sobriete_visuelle",
+       "fmt": "grille"
+      },
+      {
+       "label": "Densité sans bruit",
+       "path": "grille.densite_sans_bruit",
+       "fmt": "grille"
+      },
+      {
+       "label": "Clavier d'abord",
+       "path": "grille.clavier_dabord",
+       "fmt": "grille"
+      },
+      {
+       "label": "Fluidité et animation",
+       "path": "grille.fluidite_animation",
+       "fmt": "grille"
+      },
+      {
+       "label": "Contenu au premier plan",
+       "path": "grille.contenu_premier_plan",
+       "fmt": "grille"
+      },
+      {
+       "label": "Apprentissage immédiat",
+       "path": "grille.apprentissage_immediat",
+       "fmt": "grille"
+      },
+      {
+       "label": "Magnétisme",
+       "path": "grille.magnetisme",
+       "fmt": "grille"
+      }
+     ]
+    },
+    {
+     "title": "Ce que c'est",
+     "fields": [
+      {
+       "label": "Famille",
+       "path": "famille",
+       "fmt": "dict",
+       "dict": "famille"
+      },
+      {
+       "label": "Licence",
+       "path": "licence"
+      },
+      {
+       "label": "Source de la licence",
+       "path": "licence_source"
+      },
+      {
+       "label": "Dépôt",
+       "path": "depot"
+      },
+      {
+       "label": "Plateformes",
+       "path": "plateformes"
+      },
+      {
+       "label": "Navigateur",
+       "path": "web_reel"
+      },
+      {
+       "label": "Prix",
+       "path": "prix"
+      },
+      {
+       "label": "Version",
+       "path": "version"
+      },
+      {
+       "label": "Date de version",
+       "path": "date_version"
+      },
+      {
+       "label": "État",
+       "path": "etat"
+      }
+     ]
+    },
+    {
+     "title": "Montage et ergonomie",
+     "fields": [
+      {
+       "label": "Timeline",
+       "path": "timeline"
+      },
+      {
+       "label": "Fonctions et ergonomie",
+       "path": "fonctions_ergonomie",
+       "full": true
+      },
+      {
+       "label": "Vitesse",
+       "path": "vitesse"
+      }
+     ]
+    },
+    {
+     "title": "Agents et IA",
+     "fields": [
+      {
+       "label": "Agent, MCP, API",
+       "path": "agent_mcp_api",
+       "full": true
+      },
+      {
+       "label": "IA intégrée",
+       "path": "ia_integree",
+       "full": true
+      },
+      {
+       "label": "Où tourne l'IA",
+       "path": "ia_execution"
+      }
+     ]
+    },
+    {
+     "title": "Formats",
+     "fields": [
+      {
+       "label": "ProRes",
+       "path": "formats.prores"
+      },
+      {
+       "label": "RAW",
+       "path": "formats.raw"
+      },
+      {
+       "label": "AAF",
+       "path": "formats.aaf"
+      },
+      {
+       "label": "FCPXML",
+       "path": "formats.fcpxml"
+      },
+      {
+       "label": "EDL",
+       "path": "formats.edl"
+      },
+      {
+       "label": "OTIO",
+       "path": "formats.otio"
+      }
+     ]
+    },
+    {
+     "title": "Retours de monteurs",
+     "fields": [
+      {
+       "label": "Citations",
+       "path": "retours_reddit",
+       "fmt": "table",
+       "noLabel": true,
+       "cols": [
+        {
+         "label": "Citation",
+         "path": "citation"
+        },
+        {
+         "label": "Contexte",
+         "path": "contexte"
+        },
+        {
+         "label": "Lien",
+         "path": "url",
+         "fmt": "url"
+        }
+       ]
+      },
+      {
+       "label": "Moisson",
+       "path": "reddit_statut"
+      }
+     ]
+    },
+    {
+     "title": "Preuves",
+     "fields": [
+      {
+       "label": "Réserve",
+       "path": "reserve",
+       "full": true
+      },
+      {
+       "label": "Dernier relevé",
+       "path": "derniere_preuve"
+      },
+      {
+       "label": "Capture",
+       "path": "source_observee"
+      },
+      {
+       "label": "Source de la capture",
+       "path": "capture_source",
+       "fmt": "url"
+      },
+      {
+       "label": "Sources",
+       "path": "sources",
+       "fmt": "sources",
+       "noLabel": true
+      }
+     ]
+    }
+   ],
+   "hiddenFields": [
+    "nom",
+    "slug",
+    "url",
+    "capture",
+    "open_source",
+    "grille",
+    "autres_familles",
+    "type_timeline",
+    "web_classe",
+    "mcp_classe",
+    "formats",
+    "retours_reddit",
+    "sources",
+    "capture_source"
+   ],
+   "icon": "video",
+   "views": [
+    "top",
+    "matrix",
+    "list"
+   ],
+   "logo": {
+    "path": "url",
+    "skip": [
+     "github.com",
+     "huggingface.co",
+     "x.com",
+     "reddit.com",
+     "www.reddit.com"
+    ]
+   },
+   "marks": [],
+   "dicts": {
+    "0": "famille"
+   },
+   "board": {
+    "title": "Le plus proche de Final Cut Pro",
+    "default": "total",
+    "stripTitle": true,
+    "note": "Grille éditoriale et non mesure, faite sur des images et des documentations. Proximité d'une interface, pas qualité d'un logiciel.",
+    "flags": [
+     {
+      "path": "type_timeline",
+      "icon": "shape",
+      "label": "Timeline magnétique",
+      "classes": [
+       {
+        "re": "^Magn",
+        "state": "y"
+       },
+       {
+        "re": "^Hybride",
+        "state": "p"
+       },
+       {
+        "re": "^Non v",
+        "state": "u"
+       }
+      ],
+      "else": "n"
+     },
+     {
+      "path": "web_classe",
+      "icon": "eye",
+      "label": "Dans le navigateur",
+      "classes": [
+       {
+        "re": "^oui",
+        "state": "y"
+       },
+       {
+        "re": "^(cloud|partiel)",
+        "state": "p"
+       },
+       {
+        "re": "^non v",
+        "state": "u"
+       }
+      ],
+      "else": "n"
+     },
+     {
+      "path": "open_source",
+      "icon": "open",
+      "label": "Open source",
+      "eq": true
+     },
+     {
+      "path": "mcp_classe",
+      "icon": "plug",
+      "label": "MCP",
+      "classes": [
+       {
+        "re": "^oui",
+        "state": "y"
+       },
+       {
+        "re": "^tiers",
+        "state": "p"
+       },
+       {
+        "re": "^non v",
+        "state": "u"
+       }
+      ],
+      "else": "n"
+     }
+    ],
+    "filters": [
+     {
+      "f": "open",
+      "o": "os",
+      "icon": "open",
+      "label": "Open source"
+     },
+     {
+      "f": "web",
+      "o": "oui",
+      "icon": "eye",
+      "label": "Navigateur"
+     },
+     {
+      "f": "tl",
+      "o": "magnétique",
+      "icon": "shape",
+      "label": "Magnétique"
+     }
+    ],
+    "criteria": [
+     {
+      "id": "total",
+      "label": "Total",
+      "kind": "sum",
+      "paths": [
+       "grille.sobriete_visuelle.note",
+       "grille.densite_sans_bruit.note",
+       "grille.clavier_dabord.note",
+       "grille.fluidite_animation.note",
+       "grille.contenu_premier_plan.note",
+       "grille.apprentissage_immediat.note",
+       "grille.magnetisme.note"
+      ],
+      "titles": [
+       "Sobriété visuelle",
+       "Densité sans bruit",
+       "Clavier d'abord",
+       "Fluidité et animation",
+       "Contenu au premier plan",
+       "Apprentissage immédiat",
+       "Magnétisme"
+      ],
+      "max": 3,
+      "min": 4,
+      "noteTpl": "Total : points obtenus sur les points possibles. Un critère non noté sort du calcul, il ne vaut jamais 0. Il faut au moins {min} critères notés sur 7 pour figurer ici."
+     },
+     {
+      "id": "sobriete_visuelle",
+      "label": "Sobriété",
+      "kind": "note",
+      "path": "grille.sobriete_visuelle.note",
+      "just": "grille.sobriete_visuelle.justification",
+      "dir": "desc",
+      "max": 3,
+      "note": "Sobriété visuelle : notes entières de 0 à 3, donc beaucoup d'ex aequo au même rang. Le texte sous chaque nom est la justification de la note."
+     },
+     {
+      "id": "densite_sans_bruit",
+      "label": "Densité",
+      "kind": "note",
+      "path": "grille.densite_sans_bruit.note",
+      "just": "grille.densite_sans_bruit.justification",
+      "dir": "desc",
+      "max": 3,
+      "note": "Densité sans bruit : notes entières de 0 à 3, donc beaucoup d'ex aequo au même rang. Le texte sous chaque nom est la justification de la note."
+     },
+     {
+      "id": "clavier_dabord",
+      "label": "Clavier",
+      "kind": "note",
+      "path": "grille.clavier_dabord.note",
+      "just": "grille.clavier_dabord.justification",
+      "dir": "desc",
+      "max": 3,
+      "note": "Clavier d'abord : notes entières de 0 à 3, donc beaucoup d'ex aequo au même rang. Le texte sous chaque nom est la justification de la note."
+     },
+     {
+      "id": "contenu_premier_plan",
+      "label": "Contenu",
+      "kind": "note",
+      "path": "grille.contenu_premier_plan.note",
+      "just": "grille.contenu_premier_plan.justification",
+      "dir": "desc",
+      "max": 3,
+      "note": "Contenu au premier plan : notes entières de 0 à 3, donc beaucoup d'ex aequo au même rang. Le texte sous chaque nom est la justification de la note."
+     },
+     {
+      "id": "apprentissage_immediat",
+      "label": "Apprentissage",
+      "kind": "note",
+      "path": "grille.apprentissage_immediat.note",
+      "just": "grille.apprentissage_immediat.justification",
+      "dir": "desc",
+      "max": 3,
+      "note": "Apprentissage immédiat : notes entières de 0 à 3, donc beaucoup d'ex aequo au même rang. Le texte sous chaque nom est la justification de la note."
+     },
+     {
+      "id": "magnetisme",
+      "label": "Magnétisme",
+      "kind": "note",
+      "path": "grille.magnetisme.note",
+      "just": "grille.magnetisme.justification",
+      "dir": "desc",
+      "max": 3,
+      "note": "Magnétisme : notes entières de 0 à 3, donc beaucoup d'ex aequo au même rang. Le texte sous chaque nom est la justification de la note."
+     }
+    ],
+    "matrix": {
+     "paths": [
+      "grille.sobriete_visuelle.note",
+      "grille.densite_sans_bruit.note",
+      "grille.clavier_dabord.note",
+      "grille.fluidite_animation.note",
+      "grille.contenu_premier_plan.note",
+      "grille.apprentissage_immediat.note",
+      "grille.magnetisme.note"
+     ],
+     "titles": [
+      "Sobriété visuelle",
+      "Densité sans bruit",
+      "Clavier d'abord",
+      "Fluidité et animation",
+      "Contenu au premier plan",
+      "Apprentissage immédiat",
+      "Magnétisme"
+     ],
+     "short": [
+      "Sobr.",
+      "Dens.",
+      "Clav.",
+      "Flui.",
+      "Cont.",
+      "Appr.",
+      "Magn."
+     ],
+     "note": "Survole une case pour lire la justification. Clique sur une colonne pour trier."
+    },
+    "src": "Source : notes de l'auteur, justifiées dans chaque fiche."
+   }
+  }
+ ],
+ "display": {
+  "keep": "(^|\\.)(url|capture|nom|capture_source)$|^chemin_capture$",
+  "rules": [],
+  "allow": [
+   "project.json",
+   "film.html",
+   "SKILL.md",
+   "install.md",
+   "project.md",
+   "LICENSE-AGPL3.md",
+   "LICENSE.md",
+   "server.js",
+   "magnetic.rs",
+   "Next.js",
+   "transformers.js",
+   "ffmpeg.wasm",
+   "README.md",
+   "CHANGELOG.md",
+   "index.html",
+   "package.json",
+   "CLAUDE.md",
+   "AGENTS.md"
+  ]
+ }
+}
